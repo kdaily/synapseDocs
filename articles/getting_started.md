@@ -1,98 +1,104 @@
 ---
 title: "Getting Started with Synapse"
 layout: article
+excerpt: A getting started guide for new users who are interested in learning about Synapse.
+category: intro
+order: 1
 ---
 
-## Getting started with Synapse using R
+# Get Started with Synapse
 
-Import the synapse R client and log in to Synapse using locally stored credentials. New users have to supply username and password or their Synapse session API key
+This guide is for new users who are interested in learning about Synapse. You will learn fundamental Synapse features by performing some common tasks:
 
-{% highlight r %}
+* Create your own project and add content to Synapse
+* Provide a project description alongside your materials via the Synapse `Wiki` tools
+* Share your work with other Synapse users, teams of users, or the public
 
-library(synapseClient)
-synapseLogin()
-{% endhighlight %}
+## What is Synapse?
 
+Synapse is an open source collaborative platform. It can store data, code, results, and descriptions research work. Synapse hosts many [research projects](https://www.synapse.org/#!StandaloneWiki:ResearchCommunities) and [resources](https://www.synapse.org/#!StandaloneWiki:OpenResearchProjects). It also hosts crowdsourced competitions, including [DREAM Challenges](http://dreamchallenges.org/). [Sage Bionetworks](http://www.sagebionetworks.org) provides Synapse services free of charge to the scientific community through generous support from various [funding sources](/articles/faq.html#how-is-synapse-funded).
 
+Synapse operates under a thorough [governance process](/articles/governance.html). This includes [Terms and Conditions of Use](https://s3.amazonaws.com/static.synapse.org/governance/SageBionetworksSynapseTermsandConditionsofUse.pdf?v=4), guidelines, and operating procedures.
 
-#### Create a Synapse Project to store your work:
+## Register for a Synapse Account
 
-{% highlight r %}
-random_string <- paste(sample(LETTERS,4),collapse="")
-proj_name <- paste('Demo Synapse Project',random_string,sep='-')
-myProject <- Project(name=proj_name)
-myProject <- synStore(myProject)
-print(paste('Created a project with Synapse id', myProject$properties$id, sep = ' '))
-{% endhighlight %}
+Anyone can browse public content on the Synapse web site, but to download and create content you will need to register for an account using an email address. You will receive an email message for verification to complete the registration process.
 
-#### Or, start with an existing project, such as the one created above:
+<a href="https://www.synapse.org/register" class="btn btn-primary">Register</a>
 
+Synapse can store human subject data with sharing and use restrictions. Before you can upload files, you must demonstrate you understand what you can share in Synape. To start this process:
 
-{% highlight r %}
-id = myProject$properties$id
-myProject = synGet(id)
-{% endhighlight %}
+<a href="https://www.synapse.org/#!Quiz:Certification" class="btn btn-primary">Become a Certified User</a>
 
-#### See your project online:
+Read the [accounts, certification, and profile validation](/articles/accounts_certified_users_and_profile_validation.html) page to learn more about the different levels of users.
 
+## Project and Data Management on Synapse
 
-{% highlight r %}
-onWeb(myProject)
-{% endhighlight %}
+Synapse content is organized in `Projects`. In a project you can upload files and write descriptions (Wikis). Each Project also contains a discussion forum.
 
-#### Create a wiki for the project and put some text on it:
+To create a `Project`:
 
-{% highlight r %}
-placeholderText = "Place-holder text: Credibly innovate granular internal or organic sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas with optimal networks."
-wiki = WikiPage(owner=myProject, title="Analysis summary", markdown=placeholderText)
-wiki = synStore(wiki)
-{% endhighlight %}
+1. Go to your [projects list](https://www.synapse.org/#!Profile:v/projects) on your dashboard.
+1. Click the **Create Project** button.
+1. Decide on a unique name for your `Project` and click Save.
 
+By default, your newly created `Project` is private. You are the only person who can access it, including any content in it. In another tutorial you will learn how to share your project with other users.
 
-#### Organize the project by creating folders within it:
+Synapse projects are assigned a Synapse ID, unique identifiers used for reference with the format `syn12345678`.
 
-{% highlight r %}
-myFolderEntity = Folder(name = "plots", parentId = myProject$properties$id)
-myFolderEntity = synStore(myFolderEntity)
-{% endhighlight %}
+To find your project at any time, you can see your projects on your [dashboard](https://www.synapse.org/#!Profile:v/projects).
 
-#### See your project online:
+## Organizing Data: creating Files and Folders
 
-{% highlight r %}
-onWeb(myProject)
-{% endhighlight %}
+You can use the `Files` tab to upload data, code, results, and other information to your project. Synapse Folders are used to organize content and can contain other Folders and Files. Synapse `Folders` and `Files` are also assigned a unique identifier (Synapse ID).
 
-#### Create and upload a plot to the project:
+To add a `Folder`:
 
-{% highlight r %}
-x = rnorm(500,mean=6,sd=4)
-y = rnorm(500,mean=2,sd=3)
-png(file="demo_plot.png")
-par(mfrow = c(1,2))
-hist(x, col = "red", xlim = range(-10,15))
-hist(y, col = "blue", xlim = range(-10,15))
-dev.off()
+1. Click on the Files tab.
+1. Use the Tools menu and select **Add New Folder**.
+1. Decide on a Folder name and click 'Save'.
 
-plotFileEntity = File(path="demo_plot.png", parentId=myFolderEntity$properties$id)
-synSetAnnotations(plotFileEntity) = list(sampleType="iPSC", institution="FredHutch", protocol="A43.6")
-plotFileEntity = synStore(plotFileEntity)
-{% endhighlight %}
+To upload a file into that folder:
 
+1.  Use the Tools menu and select **Upload or Link to File**.
+1. Use the Browse button to select the file, or drag and drop it to upload and click Save.
 
+To explore other features available for files and folders, read about [annotating files](/articles/annotation_and_query.html), [assigning DOIs](/articles/doi.html), [versioning](/articles/files_and_versioning.html), [provenance](/articles/provenance.html),and [sharing settings](/articles/access_controls.html).
 
-#### Add provenance describing how plot was created:
-{% highlight r %}
-plotFileEntity = synStore(plotFileEntity, 
-                          executed='https://github.com/Sage-Bionetworks/synapseTutorials/blob/master/R/1.Synapse_R_API_demo.Rmd', 
-                          activityName=" demo plot distributions", 
-                          activityDescription="Generate histograms for demo",forceVersion=F)
-{% endhighlight %}
+## Adding a Wiki to your Project
 
+A Wiki is a document that can be edited by multiple people on the web. The Wiki tab in a project provides a space to write a description. This Wiki can be organized with subpages and a table of contents. Folders and files in your project can also have a wiki. You can use the wiki to document the contents of the folder or file, similar to a README.
 
-#### View project on web:
+Wiki pages are written with [Markdown](https://www.markdownguide.org/), a lightweight syntax for styling text on the web. In addition to standard Markdown, `Wiki` pages can contain customized content, including images, tables, code blocks, LaTeX formatted equations, and scholarly references. Synapse Wiki widgets also allow you to embed content based on other resources stored in Synapse.
 
-{% highlight r %}
-onWeb(plotFileEntity)
-{% endhighlight %}
+See the [Wiki](/articles/wikis.html) user guide for more information and examples.
 
+Create a Project wiki:
 
+1. From the project page, click the **Tools button** and choose **Edit Project Wiki**.
+1. Add some text describing your project, and then click Save.
+
+To add a wiki to a folder or file:
+
+1. Click on the Files tab and navigate to the Folder or File.
+1. Use the Tools menu and select **Edit Folder Wiki** or **Edit File Wiki**.
+1. Add some text describing the folder or file, and then click Save.
+
+## Local Folder and File Sharing Settings
+
+By default, access to folders and files is controlled by the same **sharing settings** as the project. You may set different sharing settings for specific folders and files in a project.
+
+You may share a `Project` with specific people or make it public.
+
+1. Click on the **Project Settings** menu and select **Project Sharing Settings**.
+1. Add individuals or teams with different permissions.
+
+For more details, read the [How to Share Projects](/articles/access_controls.html#how-to-share-projects) section of the Sharing Settings and Conditions for Use instructions.
+
+For instructions on changing sharing settings for `Folders` and `Files`, read the [Sharing Other Content](/articles/access_controls.html#sharing-other-content) section of the Sharing Settings and Conditions for Use instructions.
+
+## More Guides
+
+Find additional information in our <a href="/articles/">User Guide</a>.
+
+For information on using Synapse programmatically, see the documentation for the [Python client](https://python-docs.synapse.org/build/html/index.html), [command line client](https://python-docs.synapse.org/build/html/CommandLineClient.html), and [R client](https://r-docs.synapse.org/)
