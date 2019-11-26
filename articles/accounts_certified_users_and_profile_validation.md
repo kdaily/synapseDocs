@@ -12,15 +12,16 @@ There are three levels of users in Synapse: `Anonymous`, `Registered`, and `Cert
 The table below summarizes the user privileges for each level.  
 
 {:.markdown-table}
-|                               | Anonymous | Registered | Certified |
-| :---------------------------- | :---: | :---: | :---: |
-| Browse Public Project Catalog |   X   |   X   |   X   |
-| Browse Public File Catalog    |   X   |   X   |   X   |
-| Create a Project              |       |   X   |   X   |
-| Add Wiki Content              |       |   X   |   X   |
-| Download Files/Tables*        |       |   X   |   X   |
-| Upload Files/Tables           |       |       |   X   |
-| Add Provenance                |       |       |   X   |
+|                               | Anonymous | Registered | Certified | Validated |
+|-:-----------------------------|-:-:-------|-:-:--------|-:-:-------|-:-:-------|
+| View Public Wiki Pages        | X         | X          | X         | X         |
+| Browse Public Project Catalog | X         | X          | X         | X         |
+| Browse Public File Catalog    | X         | X          | X         | X         |
+| Create a Project              |           | X          | X         | X         |
+| Add Wiki Content              |           | X          | X         | X         |
+| Download Files/Tables*        |           | X          | X         | X         |
+| Upload Files/Tables           |           |            | X         | X         |
+| Add Provenance                |           |            | X         | X         |
 
 *Your ability to download a `File` or `Table` depends on your Synapse user type AND fulfilling the `Conditions for Use`, if any, of the `File` or `Table`.  
 
