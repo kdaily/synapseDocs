@@ -1,7 +1,7 @@
 ---
 title: Discussion Forums
 layout: article
-excerpt: Explore the features of the discussion forum and how to use it to help your collaborations.
+excerpt: Communicate with collaborators and other community members with the Synapse Discussion Forum.
 category: collaboration-and-communication
 ---
 
@@ -64,4 +64,4 @@ Moderators may also "pin" important threads using the **pin** icon located next 
 
 # See Also 
 
-[Wikis](wikis.md)
+[Wikis]({% link _articles/wikis.md %})

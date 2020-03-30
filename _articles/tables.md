@@ -1,7 +1,7 @@
 ---
 title: Tables
 layout: article
-excerpt: Creating, modifying, and querying tabular data on Synapse.
+excerpt: Create, modify, and query data in Synapse Tables.
 category: managing-data
 ---
 
@@ -220,4 +220,4 @@ Finally, query the table and download the album cover files. Clicking on any fil
 
 # See Also
 
-[Annotations and Queries](annotation_and_query.md), [Downloading Data](downloading_data.md), [Files and Versioning](files_and_versioning.md)
+[Annotations and Queries]({% link _articles/annotation_and_query.md %}), [Downloading Data]({% link _articles/downloading_data.md %}), [Files and Versioning]({% link _articles/files_and_versioning.md %})

@@ -141,8 +141,6 @@ You must be the person who created the entity to delete provenance.
 
 Navigate to the entity you would like to delete provenance from (e.g. a File or Folder). In this example, we are deleting provenance from a file. Select **Tools->Edit File Provenance**. In the list of **Used** and **Executed**, click the **X** to delete each activity and **Save** your changes.
 
-<img id="webTab" src="../assets/images/delete_provenance.png">
-
 ##### Command Line
 
 Currently, deleting provenance is not supported in the command line client.
@@ -252,4 +250,4 @@ finalList <- lapply(finalList, function(x) synStore(x, activity=act))
 
 ### See Also
 
-[Files and Versioning](versioning.md), [Annotations and Queries](annotation_and_query.md)
+[Files and Versioning]({% link _articles/versioning.md %}), [Annotations and Queries]({% link _articles/annotation_and_query.md %})
