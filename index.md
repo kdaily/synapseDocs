@@ -4,6 +4,8 @@ description: Synapse is a collaborative, open-source research platform that allo
 layout: index
 ---
 
+<div class='container' style='padding:0 0 0 0; width:80%;'>
+
 <div class="col-xs-12 col-md-12 col-lg-12">
     <div id="landing-cse">
         <script>
@@ -77,4 +79,5 @@ layout: index
         </a>
     </div>
 
+</div>
 </div>
